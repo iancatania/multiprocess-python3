@@ -27,7 +27,7 @@ while True:
     if not os.path.exists(f"./{data['UID']}"):
         os.mkdir(data['UID'])
 
-    write = open(f"{data['File']}")
+    write = open(f"{data['File']}", "w")
     write.write(f"{data['Data']}")
 
 
