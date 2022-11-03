@@ -20,6 +20,5 @@ while True:
     print('Servicing client at %s'%addr[0])
     res = 'You have connected to %s, please stand by...'%host
     client.send(res.encode('UTF-8'))
-    client.send(data)
     client.close()
 server.close()
