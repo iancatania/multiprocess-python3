@@ -20,5 +20,16 @@ while True:
     print('Servicing client at %s'%addr[0])
     res = 'You have connected to %s, please stand by...'%host
     client.send(res.encode('UTF-8'))
+
+    data = client.recv(1024)
+    data = json.loads(data)
+
+    if not os.path.exists(f"./{data['UID']}"):
+        os.mkdir(data['UID'])
+
+    write = open(f"{data['File']}")
+    write.write(f"{data['Data']}")
+
+
     client.close()
 server.close()

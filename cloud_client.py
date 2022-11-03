@@ -14,17 +14,19 @@ parser.add_argument('--Data', type=str, required=False)
 
 args = parser.parse_args()
 
+with open(args.Data, 'r') as read:
+    data = read.read()
+
 dict = {
 
     "UID": args.UID,
     "File": args.File,
-    "Data": args.Data
-
+    "Data": data
 }
 
 data = json.dumps(dict)
 
 res = client.recv(4096)
-client.send(data)
+client.send(data.encode())
 client.close()
 print(res.decode('UTF-8'))
