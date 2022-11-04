@@ -21,9 +21,11 @@ while True:
     res = 'You have connected to %s, please stand by...'%host
     client.send(res.encode('UTF-8'))
 
+	# recieve data from client
     data = client.recv(1024)
     data = json.loads(data)
 
+	# check if file exists with sent data
     if not os.path.exists(f"./{data['UID']}"):
         os.mkdir(data['UID'])
 
